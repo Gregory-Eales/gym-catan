@@ -1,0 +1,2 @@
+from gym_catan.envs.catan_env import CatanEnv
+from gym_catan.envs.catan_extrahard_env import CatanExtraHardEnv
