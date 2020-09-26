@@ -4,19 +4,21 @@ catan gym for training reinforcement learning algorithms
 
 ### Notable features
 
-- 
+- tunable reward incentives
+- fully functional gui for game viewing and playing
+- 3 different observation types (feature plane, feature plane + feature vector, feature vector)
 
 ## Installation
 
 Install from pip package, if you only want to use the gym environment, but don't want the example usage scripts:
 
-```
+```python
 pip install gym-catan
 ```
 
 Install from the repo, if you want basic usage demos, training scripts, pre-trained models:
 
-```
+```python
 git clone https://github.com/Gregory-Eales/gym-catan.git
 cd gym-catan
 pip install -e .
@@ -26,7 +28,7 @@ pip install -e .
 
 After installing from the repo, you can play the game against the baseline agent by running:
 
-```
+```python
 python test.py
 ```
 
@@ -37,8 +39,8 @@ There are two types of environments: state-space observation or pixel observatio
 
 |Environment|Observation Space|Action Space
 |---|---|---|
-|catan-v0|Box(11, 11, 64)|MultiBinary(1000)
-|catan-extrahard-v0|Box(11, 11, 64)|MultiBinary(1000)
+|catan-v0|Box(23, 19, 5)+Vector(49)|Vector(200+)
+|catan-extrahard-v0|Box(23, 19, 5)+Vector(49)|Vector(200+)
 
 
 ### Using Multi-Agent Environment
