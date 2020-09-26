@@ -115,6 +115,10 @@ print("policy2's score:", -total_reward)
 
 ## Publications
 
+## Sources
+
+https://www.redblobgames.com/grids/hexagons/implementation.html
+
 
 
 ## Citation
