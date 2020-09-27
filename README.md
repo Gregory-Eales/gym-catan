@@ -24,15 +24,6 @@ cd gym-catan
 pip install -e .
 ```
 
-## Basic Usage
-
-After installing from the repo, you can play the game against the baseline agent by running:
-
-```python
-python test.py
-```
-
-
 ## Environment
 
 There are two types of environments: state-space observation or pixel observations:
@@ -43,9 +34,9 @@ There are two types of environments: state-space observation or pixel observatio
 |catan-extrahard-v0|Box(23, 19, 5)+Vector(49)|Vector(200+)
 
 
-### Using Multi-Agent Environment
+### Using Environment
 
-It is straight forward to modify the gym loop to enable multi-agent or self-play. Here is a basic gym loop:
+basic usage
 
 ```python
 import gym
@@ -57,53 +48,17 @@ done = False
 total_reward = 0
 
 while not done:
-  action = my_policy(obs)
+  action = agent.act(obs)
   obs, reward, done, info = env.step(action)
   total_reward += reward
   env.render()
 
-print("score:", total_reward)
-```
-
-The `info` object contains extra information including the observation for the opponent:
-
-```
-info = {
-  'ale.lives': agent's lives left,
-  'ale.otherLives': opponent's lives left,
-  'otherObs': opponent's observations,
-  'state': agent's state (same as obs in state mode),
-  'otherState': opponent's state (same as otherObs in state mode),
-}
-```
-
-This modification allows you to evaluate `policy1` against `policy2`
-
-```python
-obs1 = env.reset()
-obs2 = obs1 # both sides always see the same initial observation.
-
-done = False
-total_reward = 0
-
-while not done:
-
-  action1 = policy1(obs1)
-  action2 = policy2(obs2)
-
-  obs1, reward, done, info = env.step(action1, action2) # extra argument
-  obs2 = info['otherObs']
-
-  total_reward += reward
-  env.render()
-
-print("policy1's score:", total_reward)
-print("policy2's score:", -total_reward)
+print("score: {}".format(total_reward))
 ```
 
 
 
-## Evaluating against other agents
+## RL Algorithm Comparison
 
 
 ### catan-v0
@@ -122,12 +77,7 @@ print("policy2's score:", -total_reward)
 https://www.redblobgames.com/grids/hexagons/implementation.html
 
 
-
 ## Citation
-
-<!--<p align="left">
-  <img width="100%" src="https://media.giphy.com/media/WsMaF3xeATeiCv7dBq/giphy.gif"></img></img>
-</p>-->
 
 Please use this BibTeX to cite this repository in your publications:
 
