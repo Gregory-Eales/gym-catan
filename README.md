@@ -3,9 +3,6 @@ catan gym for training reinforcement learning algorithms
 
 <img src="https://github.com/Gregory-Eales/gym-catan/blob/master/img/title_img.png" height="600" />
 
-
-
-
 ### Notable features
 
 - tunable reward incentives
