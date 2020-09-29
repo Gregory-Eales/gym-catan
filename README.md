@@ -1,8 +1,8 @@
 # gym-catan
 catan gym for training reinforcement learning algorithms
 
-<img src="https://github.com/Gregory-Eales/gym-catan/blob/master/img/title_img.png" height="400" />
-![Image of Catan](https://github.com/Gregory-Eales/gym-catan/blob/master/img/title_img.png | width=100)
+<img src="https://github.com/Gregory-Eales/gym-catan/blob/master/img/title_img.png" height="600" />
+
 
 
 
