@@ -38,59 +38,87 @@ class Renderer(object):
 		self.draw_hex_tiles()   
 
 
+		self.player1_stat = Label(self.root, height = 5, width = 5)
+		self.player2_stat = Label(self.root, height = 5, width = 5) 
+		self.player3_stat = Label(self.root, height = 5, width = 5) 
+		self.player4_stat = Label(self.root, height = 5, width = 5)  
+
+		self.player1_stat.grid(row = 0, column = 0, padx = 0, pady = 0)
+		self.player2_stat.grid(row = 0, column = 1, padx = 0, pady = 0)
+		self.player3_stat.grid(row = 0, column = 2, padx = 0, pady = 0)
+		self.player4_stat.grid(row = 0, column = 3, padx = 0, pady = 0)
+
+		"""
+		self.player1_stat.insert(END, "")
+		self.player2_stat.insert(END, "")
+		self.player3_stat.insert(END, "")
+		self.player4_stat.insert(END, "")
+		"""
+
 		self.trade_button = Button(
 			self.root,
 			text="trade",
-			command=self.greet
+			command=self.trade,
+			image = self.trade_icon,
+			compound = TOP 
 			)
 		
 		self.settlement_button = Button(
 			self.root, text="build settlement",
-			command=self.greet
+			command=self.build_settlement,
+			image = self.settlement_icon,
+			compound = TOP 
 			)
 
 		self.road_button = Button(
 			self.root,
 			text="build road",
-			command=self.greet
+			command=self.build_road
 			)
 
 		self.city_button = Button(
 			self.root,
 			text="build city",
-			command=self.greet
+			command=self.build_city,
+			image = self.city_icon,
+			compound = TOP 
 			)
 
 		self.development_button = Button(
 			self.root,
 			text="buy development card",
-			command=self.greet
+			command=self.buy_development
 			)
 
-		self.end_button = Button(
+		self.end_turn_button = Button(
 			self.root,
 			text="end turn",
-			command=self.greet
+			command=self.root.quit
 			)
 
+		"""
 		self.close_button = Button(
 			self.root,
 			text="Close",
 			command=self.root.quit
 			)
+		"""
 
-		self.trade_button.pack()
-		self.settlement_button.pack()
-		self.road_button.pack()
-		self.city_button.pack()
-		self.development_button.pack()
-		self.close_button.pack()
+		self.trade_button.grid(row = 2, column = 0, padx = 0, pady = 0)
+		self.settlement_button.grid(row = 2, column = 1, padx = 0, pady = 0)
+		self.road_button.grid(row = 2, column = 2, padx = 0, pady = 0)
+		self.city_button.grid(row = 2, column = 3, padx = 0, pady = 0)
+		self.development_button.grid(row = 2, column = 4, padx = 50, pady = 0)
+		self.end_turn_button.grid(row = 2, column = 5, padx = 50, pady = 0)
+		#self.close_button.grid(row = 1, column = 5, padx = 0, pady = 0)
 
 		self.root.mainloop()
 
 	def create_window(self):
 		
 		self.root = Tk()
+		self.root.configure(bg='black')
+		self.root['bg'] = 'black'
 		self.width = 3*self.root.winfo_screenwidth()//4
 		self.height = 3*self.root.winfo_screenheight()//4
 
@@ -99,7 +127,8 @@ class Renderer(object):
 		self.canvas = Canvas(
 			self.root,
 			width = self.width,
-			height = self.height
+			height = self.height,
+			highlightthickness=0
 			)
 
 		self.canvas.create_rectangle(
@@ -110,7 +139,7 @@ class Renderer(object):
 			fill="lightblue"
 			)   
 
-		self.canvas.pack()
+		self.canvas.grid(row = 1, column = 0, columnspan = 10, padx = 0, pady = 0)
 
 	def draw_img(self, img, x, y):
 		self.canvas.create_image(x, y, anchor=NW, image=img)
@@ -169,6 +198,17 @@ class Renderer(object):
 		width = 2
 		height = 2
 
+		self.trade_icon = PhotoImage(
+			file="assets/PNG/Pieces(Black)/pieceBlack.png"
+			)
+
+		self.settlement_icon = PhotoImage(
+			file="assets/PNG/Pieces(Black)/settlementBlack.png"
+			)
+
+		self.city_icon = PhotoImage(
+			file="assets/PNG/Pieces(Black)/cityBlack2.png"
+			)
 
 
 		self.wheat_hex = PhotoImage(file=self.asset_path + "wheatHex.png")
@@ -205,7 +245,22 @@ class Renderer(object):
 		}
 
 	def greet(self):
-		print("Greetings!")
+		print("greet")
+
+	def trade(self):
+		print("Clicked Trade!")
+
+	def build_road(self):
+		print("Clicked Build Road!")
+
+	def build_settlement(self):
+		print("Clicked Build Settlement!")
+
+	def build_city(self):
+		print("Clicked Build City!")
+
+	def buy_development(self):
+		print("Clicked Buy Development!")
 
 
 	
