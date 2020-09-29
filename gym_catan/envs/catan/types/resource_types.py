@@ -33,3 +33,13 @@ class Brick(Resource):
 
 	def __init__(self):
 		pass
+
+class Desert(Resource):
+
+	def __init__(self):
+		pass
+
+class Water(Resource):
+
+	def __init__(self):
+		pass
