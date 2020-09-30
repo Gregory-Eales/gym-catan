@@ -1,7 +1,7 @@
 import numpy as np
 
 from .hex_grid import HexGrid
-from .resource_types import Wood, Wheat, Brick, Stone, Sheep, EmptyResource
+from .resource_types import Wood, Wheat, Brick, Stone, Sheep, Desert, Water, EmptyResource
 from .player_types import Red, Blue, White, Orange, EmptyPlayer
 
 class Board(Grid):

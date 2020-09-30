@@ -27,10 +27,6 @@ class Renderer(object):
 		
 		self.load_imgs()
 
-
-		self.hex_width = self.hex[Desert].width()
-		self.hex_height = self.hex[Desert].height()
-
 		#self.draw_img(
 		#	self.hex[Water],
 		#	self.width//2 - hex_width//2, self.height//2 - hex_height//2)
@@ -93,7 +89,7 @@ class Renderer(object):
 		self.end_turn_button = Button(
 			self.root,
 			text="end turn",
-			command=self.root.quit
+			command=self.end_turn
 			)
 
 		"""
@@ -119,8 +115,8 @@ class Renderer(object):
 		self.root = Tk()
 		self.root.configure(bg='black')
 		self.root['bg'] = 'black'
-		self.width = 3*self.root.winfo_screenwidth()//4
-		self.height = 3*self.root.winfo_screenheight()//4
+		self.width = 3*self.root.winfo_screenwidth()//5
+		self.height = 3*self.root.winfo_screenheight()//5
 
 		self.root.title("Catan")
 
@@ -195,9 +191,6 @@ class Renderer(object):
 
 	def load_imgs(self):
 
-		width = 2
-		height = 2
-
 		self.trade_icon = PhotoImage(
 			file="assets/PNG/Pieces(Black)/pieceBlack.png"
 			)
@@ -218,6 +211,13 @@ class Renderer(object):
 		self.water_hex = PhotoImage(file=self.asset_path + "waterHex.png")
 		self.desert_hex = PhotoImage(file=self.asset_path + "desertHex.png")
 		self.wood_hex = PhotoImage(file=self.asset_path + "woodHex.png")
+
+
+		self.hex_width = self.desert_hex.width()
+		self.hex_height = self.desert_hex.height()
+
+		width = self.width/self.hex_width
+		height = self.height/self.hex_height
 
 		self.wheat_hex = self.wheat_hex.subsample(width, height)
 		print("scaled image")
@@ -244,6 +244,9 @@ class Renderer(object):
 		Wheat:self.wheat_hex
 		}
 
+		self.hex_width = self.hex[Desert].width()
+		self.hex_height = self.hex[Desert].height()
+
 	def greet(self):
 		print("greet")
 
@@ -261,6 +264,9 @@ class Renderer(object):
 
 	def buy_development(self):
 		print("Clicked Buy Development!")
+
+	def end_turn(self):
+		print("Clicked End Turn!")
 
 
 	

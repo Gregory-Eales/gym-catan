@@ -8,7 +8,6 @@ class Catan(object):
 
 	def __init__(self):
 
-
 		self.board = Board()
 		self.players = Players()
 
